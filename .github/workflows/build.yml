@@ -21,20 +21,12 @@ jobs:
           pip install --upgrade pip
           pip install buildozer cython
 
-      - name: إعداد Android SDK
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y android-sdk
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools" "build-tools;35.0.0" "platforms;android-35"
-
       - name: بناء APK
         run: |
-          buildozer android debug
+          yes | buildozer android debug
 
       - name: حفظ APK
         uses: actions/upload-artifact@v4
         with:
           name: SoloLeveling-apk
           path: bin/*.apk
-
