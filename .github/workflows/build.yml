@@ -21,13 +21,15 @@ jobs:
           pip install --upgrade pip
           pip install buildozer cython
 
-      - name: تثبيت Android SDK Tools
+      - name: تثبيت Android SDK
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
-          "platform-tools" \
-          "build-tools;35.0.0" \
-          "platforms;android-35"
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "build-tools;35.0.0" "platforms;android-35"
+
+      - name: البحث عن AIDL
+        run: |
+          find $ANDROID_HOME -name aidl
+          echo "ANDROID_HOME=$ANDROID_HOME"
 
       - name: بناء APK
         run: |
