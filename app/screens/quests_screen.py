@@ -1,18 +1,9 @@
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 
-import os
-import sys
 from datetime import date
-
-PROJECT_PATH = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
-    )
-)
-
-sys.path.append(PROJECT_PATH)
 
 from save import load_player, save_player
 from player import add_xp, add_coins
@@ -31,7 +22,6 @@ class QuestsScreen(BoxLayout):
 
         self.completed = False
 
-
         title = Label(
             text="[ DAILY QUESTS ]",
             font_size=35,
@@ -40,14 +30,12 @@ class QuestsScreen(BoxLayout):
 
         self.add_widget(title)
 
-
         self.message = Label(
             text="اختر المهام التي أنجزتها",
             font_size=20
         )
 
         self.add_widget(self.message)
-
 
         self.quests = [
             ("💪 تمرين 10 دقائق", 20, 10),
@@ -56,9 +44,7 @@ class QuestsScreen(BoxLayout):
             ("💧 شرب الماء", 10, 5)
         ]
 
-
         self.selected = []
-
 
         for index, quest in enumerate(self.quests):
 
@@ -73,8 +59,6 @@ class QuestsScreen(BoxLayout):
 
             self.add_widget(button)
 
-
-
         complete = Button(
             text="✅ استلام المكافأة",
             size_hint=(1, 0.15)
@@ -86,74 +70,49 @@ class QuestsScreen(BoxLayout):
 
         self.add_widget(complete)
 
-
-
     def select_quest(self, index):
 
         if index in self.selected:
-
+           
             self.selected.remove(index)
-
         else:
-
             self.selected.append(index)
 
-
-        self.message.text = (
-            f"تم اختيار {len(self.selected)} مهام"
-        )
-
-
+        self.message.text = f"تم اختيار {len(self.selected)} مهام"
 
     def complete_quests(self, instance):
 
         player = load_player()
 
-
         if player is None:
             self.message.text = "لا يوجد لاعب"
             return
 
-
         today = str(date.today())
 
-
         if player.get("last_quest") == today:
-
             self.message.text = "تم إنجاز مهام اليوم مسبقًا"
             return
 
-
-
         if len(self.selected) == 0:
-
             self.message.text = "اختر مهمة واحدة على الأقل"
             return
-
-
 
         total_xp = 0
         total_coins = 0
 
-
         for i in self.selected:
-
             quest = self.quests[i]
-
             total_xp += quest[1]
             total_coins += quest[2]
-
 
         player = add_xp(player, total_xp)
         player = add_coins(player, total_coins)
 
-
         player["streak"] += 1
         player["last_quest"] = today
 
-
         save_player(player)
-
 
         self.message.text = (
             f"✅ تم الإنجاز\n"

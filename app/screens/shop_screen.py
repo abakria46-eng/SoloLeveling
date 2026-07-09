@@ -2,21 +2,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 
-import sys
-import os
-
-PROJECT_PATH = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
-    )
-)
-
-sys.path.append(PROJECT_PATH)
-
-
 from shop import get_shop_items, buy_item
 from save import load_player
-
 
 
 class ShopScreen(BoxLayout):
@@ -30,7 +17,6 @@ class ShopScreen(BoxLayout):
             **kwargs
         )
 
-
         title = Label(
             text="[ 🛒 SHOP ]",
             font_size=35,
@@ -39,8 +25,6 @@ class ShopScreen(BoxLayout):
 
         self.add_widget(title)
 
-
-
         self.status = Label(
             text="اختر مكافأتك",
             font_size=20
@@ -48,23 +32,17 @@ class ShopScreen(BoxLayout):
 
         self.add_widget(self.status)
 
-
-
         self.coins_label = Label(
             font_size=22
         )
 
         self.add_widget(self.coins_label)
 
-
-
         self.rest_label = Label(
             font_size=20
         )
 
         self.add_widget(self.rest_label)
-
-
 
         for item in get_shop_items():
 
@@ -73,20 +51,14 @@ class ShopScreen(BoxLayout):
                 size_hint=(1, 0.12)
             )
 
-
             button.bind(
                 on_press=lambda instance, x=item:
                 self.buy(x["id"])
             )
 
-
             self.add_widget(button)
 
-
-
         self.update_info()
-
-
 
     def buy(self, item_id):
 
@@ -95,8 +67,6 @@ class ShopScreen(BoxLayout):
         self.status.text = message
 
         self.update_info()
-
-
 
     def update_info(self):
 
@@ -107,7 +77,6 @@ class ShopScreen(BoxLayout):
             self.coins_label.text = (
                 f"🪙 العملات: {player.get('coins', 0)}"
             )
-
 
             self.rest_label.text = (
                 f"🌴 أيام الراحة: {player.get('rest_days', 0)}"

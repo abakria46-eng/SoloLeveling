@@ -2,17 +2,6 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 
-import sys
-import os
-
-PROJECT_PATH = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
-    )
-)
-
-sys.path.append(PROJECT_PATH)
-
 from save import load_player, save_player
 from stats import initialize_stats
 
@@ -28,7 +17,6 @@ class StatsScreen(BoxLayout):
             **kwargs
         )
 
-
         self.info = Label(
             font_size=22
         )
@@ -41,9 +29,7 @@ class StatsScreen(BoxLayout):
             )
         )
 
-
         self.add_widget(self.info)
-
 
         refresh = Button(
             text="🔄 تحديث الإحصائيات",
@@ -56,30 +42,20 @@ class StatsScreen(BoxLayout):
 
         self.add_widget(refresh)
 
-
         self.update_screen()
-
-
 
     def update_screen(self, instance=None):
 
         player = load_player()
 
-
         if player is None:
-
             self.info.text = "لا يوجد لاعب محفوظ"
-
             return
 
-
         player = initialize_stats(player)
-
         save_player(player)
 
-
         stats = player["stats"]
-
 
         self.info.text = f"""
 💪 الضغط: {stats['pushups']}

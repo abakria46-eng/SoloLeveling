@@ -1,18 +1,10 @@
-import sys
-import os
-
-APP_PATH = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(APP_PATH)
-
-
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-from screens.home_screen import HomeScreen
-from screens.quests_screen import QuestsScreen
-from screens.stats_screen import StatsScreen
-from screens.achievements_screen import AchievementsScreen
-from screens.shop_screen import ShopScreen
-
+from app.screens.home_screen import HomeScreen
+from app.screens.quests_screen import QuestsScreen
+from app.screens.stats_screen import StatsScreen
+from app.screens.achievements_screen import AchievementsScreen
+from app.screens.shop_screen import ShopScreen
 
 
 class HomePage(Screen):
@@ -22,13 +14,11 @@ class HomePage(Screen):
         self.add_widget(HomeScreen())
 
 
-
 class QuestsPage(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(QuestsScreen())
-
 
 
 class StatsPage(Screen):
@@ -38,13 +28,11 @@ class StatsPage(Screen):
         self.add_widget(StatsScreen())
 
 
-
 class AchievementsPage(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(AchievementsScreen())
-
 
 
 class ShopPage(Screen):
@@ -54,9 +42,7 @@ class ShopPage(Screen):
         self.add_widget(ShopScreen())
 
 
-
 def create_manager():
-
     manager = ScreenManager()
 
     manager.add_widget(HomePage(name="home"))

@@ -1,19 +1,9 @@
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 
-import sys
-import os
-
-PROJECT_PATH = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.abspath(__file__))
-    )
-)
-
-sys.path.append(PROJECT_PATH)
-
-from game_bridge import get_player_data
+from app.game_bridge import get_player_data
 
 
 class HomeScreen(BoxLayout):
@@ -27,9 +17,7 @@ class HomeScreen(BoxLayout):
             **kwargs
         )
 
-
         player = get_player_data()
-
 
         title = Label(
             text="[ SYSTEM ]",
@@ -38,7 +26,6 @@ class HomeScreen(BoxLayout):
         )
 
         self.add_widget(title)
-
 
         info = Label(
             text=f"""
@@ -58,15 +45,12 @@ class HomeScreen(BoxLayout):
 
         self.add_widget(info)
 
-
-
         buttons = [
             ("⚔️ المهام اليومية", "quests"),
             ("📊 الإحصائيات", "stats"),
             ("🏆 الإنجازات", "achievements"),
             ("🛒 المتجر", "shop")
         ]
-
 
         for text, page in buttons:
 
@@ -76,16 +60,12 @@ class HomeScreen(BoxLayout):
             )
 
             button.bind(
-                on_press=lambda instance, p=page:
-                self.open_page(p)
+                on_press=lambda instance, p=page: self.open_page(p)
             )
 
             self.add_widget(button)
 
-
-
     def open_page(self, page):
 
         if self.parent:
-
             self.parent.manager.current = page
