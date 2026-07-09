@@ -1,0 +1,20 @@
+{
+    "name": "kiri",
+    "level": 2,
+    "xp": 200,
+    "max_xp": 100,
+    "strength": 6,
+    "speed": 5,
+    "endurance": 6,
+    "streak": 5,
+    "last_training": "2026-07-07",
+    "unlocked_achievements": [],
+    "last_daily_quest": "",
+    "coins": 50,
+    "rest_days": 1,
+    "rest_reset": "2026-07-07",
+    "last_rest_day": "2026-07-07",
+    "flexibility": 5,
+    "completed_quests": [],
+    "last_quest": "2026-07-08"
+}
