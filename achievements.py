@@ -1,106 +1,61 @@
-from rich.console import Console
 from save import save_player
-from player import add_xp, add_coins
-
-console = Console()
-
-
-def check_achievements(player):
-
-    achievements = [
-
-        {
-            "id": "level_5",
-            "condition": player["level"] >= 5,
-            "name": "⭐ المستوى 5 - بداية التطور",
-            "xp": 50,
-            "coins": 25
-        },
-
-        {
-            "id": "level_10",
-            "condition": player["level"] >= 10,
-            "name": "🔥 المستوى 10 - لاعب متقدم",
-            "xp": 100,
-            "coins": 50
-        },
-
-        {
-            "id": "streak_7",
-            "condition": player["streak"] >= 7,
-            "name": "📅 7 أيام استمرارية",
-            "xp": 100,
-            "coins": 50
-        },
-
-        {
-            "id": "streak_30",
-            "condition": player["streak"] >= 30,
-            "name": "🏆 30 يوم انضباط",
-            "xp": 300,
-            "coins": 150
-        },
-
-        {
-            "id": "streak_100",
-            "condition": player["streak"] >= 100,
-            "name": "👑 100 يوم استمرارية",
-            "xp": 1000,
-            "coins": 500
-        },
-
-    ]
-
-    return achievements
+from data.achievement_data import ACHIEVEMENTS
+from player import add_xp
+from language import t
 
 
 def show_achievements(player):
 
-    console.print("\n========== الإنجازات ==========", style="bold cyan")
+    print(f"\n========== {t('achievements')} ==========")
 
-    unlocked = False
+    if "unlocked_achievements" not in player:
+        player["unlocked_achievements"] = []
 
-    for achievement in check_achievements(player):
+    new_unlock = False
 
-        if not achievement["condition"]:
-            continue
 
-        if achievement["id"] not in player["unlocked_achievements"]:
+    for achievement in ACHIEVEMENTS:
 
-            player["unlocked_achievements"].append(
-                achievement["id"]
-            )
+        achievement_id = achievement["id"]
 
-            add_xp(player, achievement["xp"])
-            add_coins(player, achievement["coins"])
 
-            console.print(
-                f"\n🏆 {achievement['name']}",
-                style="bold green"
-            )
+        if achievement_id in player["unlocked_achievements"]:
 
-            console.print(
-                f"⭐ +{achievement['xp']} XP"
-            )
-
-            console.print(
-                f"🪙 +{achievement['coins']} Coins"
-            )
-
-            unlocked = True
+            status = "✅"
 
         else:
 
-            console.print(
-                f"✅ {achievement['name']}",
-                style="green"
-            )
+            if achievement["condition"](player):
 
-    if not unlocked and len(player["unlocked_achievements"]) == 0:
+                player["unlocked_achievements"].append(
+                    achievement_id
+                )
 
-        console.print(
-            "لا توجد إنجازات بعد 🌱",
-            style="yellow"
-        )
+                player = add_xp(
+                    player,
+                    achievement["xp"]
+                )
 
-    save_player(player)
+
+                player["coins"] += achievement["coins"]
+
+
+                print(f"\n🎉 {achievement['name']}")
+                print(f"⭐ +{achievement['xp']} XP")
+                print(f"🪙 +{achievement['coins']} {t('coins')}")
+
+
+                new_unlock = True
+                status = "✅"
+
+            else:
+
+                status = "🔒"
+
+
+        print(f"{status} | {achievement['name']}")
+
+
+    if new_unlock:
+
+        save_player(player)

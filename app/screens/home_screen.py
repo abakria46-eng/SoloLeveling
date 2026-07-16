@@ -1,4 +1,3 @@
-
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
@@ -27,6 +26,7 @@ class HomeScreen(BoxLayout):
 
         self.add_widget(title)
 
+
         info = Label(
             text=f"""
 👤 الاسم: {player['name']}
@@ -45,12 +45,15 @@ class HomeScreen(BoxLayout):
 
         self.add_widget(info)
 
+
         buttons = [
             ("⚔️ المهام اليومية", "quests"),
+            ("📖 دليل الصياد", "codex"),
             ("📊 الإحصائيات", "stats"),
             ("🏆 الإنجازات", "achievements"),
             ("🛒 المتجر", "shop")
         ]
+
 
         for text, page in buttons:
 
@@ -64,6 +67,7 @@ class HomeScreen(BoxLayout):
             )
 
             self.add_widget(button)
+
 
     def open_page(self, page):
 

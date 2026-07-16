@@ -1,0 +1,64 @@
+{
+    "system_name": "SOLO LEVELING SYSTEM",
+
+    "player_data": "بيانات اللاعب",
+    "name": "الاسم",
+    "rank": "الرتبة",
+    "title": "اللقب",
+
+    "level": "المستوى",
+    "xp": "الخبرة",
+    "strength": "القوة",
+    "speed": "السرعة",
+    "endurance": "التحمل",
+    "flexibility": "المرونة",
+    "coins": "العملات",
+    "rest_days": "أيام الراحة",
+    "streak": "السلسلة",
+    "day": "يوم",
+
+    "daily_quests": "المهام اليومية",
+    "stats": "الإحصائيات",
+    "achievements": "الإنجازات",
+    "shop": "المتجر",
+    "settings": "الإعدادات",
+
+    "pushups": "تمارين الضغط",
+    "squats": "تمارين السكوات",
+    "plank": "البلانك",
+    "running": "الجري",
+    "seconds": "ثانية",
+    "km": "كم",
+    "daily_quests_completed": "المهام اليومية المكتملة",
+    "total_xp": "إجمالي XP",
+    "total_coins": "إجمالي العملات",
+
+    "xp_50": "⭐ 50 XP",
+    "xp_100": "⭐ 100 XP",
+    "rest_day_item": "🌴 يوم راحة",
+
+    "buy_success": "✅ تم شراء",
+    "not_found": "العنصر غير موجود",
+    "not_enough_coins": "🪙 العملات غير كافية",
+    "wait_days": "⏳ انتظر",
+    "days": "يوم",
+    "max_rest": "⛔ لا يمكن امتلاك أكثر من 4 أيام راحة",
+    "weekly_limit": "⛔ وصلت للحد الأسبوعي",
+
+    "choose": "اختر",
+    "back": "رجوع",
+    "exit": "خروج",
+    "wrong_choice": "اختيار غير صحيح",
+    "no_player": "لا يوجد لاعب",
+
+    "success": "تم بنجاح",
+    "error": "خطأ",
+
+    "level_up": "تم رفع المستوى!",
+    "reward": "المكافآت",
+    "system_warning": "تنبيه النظام",
+
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "English"
+}

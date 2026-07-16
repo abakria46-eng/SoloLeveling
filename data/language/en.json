@@ -1,0 +1,64 @@
+{
+    "system_name": "SOLO LEVELING SYSTEM",
+
+    "player_data": "Player Data",
+    "name": "Name",
+    "rank": "Rank",
+    "title": "Title",
+
+    "level": "Level",
+    "xp": "XP",
+    "strength": "Strength",
+    "speed": "Speed",
+    "endurance": "Endurance",
+    "flexibility": "Flexibility",
+    "coins": "Coins",
+    "rest_days": "Rest Days",
+    "streak": "Streak",
+    "day": "Day",
+
+    "daily_quests": "Daily Quests",
+    "stats": "Statistics",
+    "achievements": "Achievements",
+    "shop": "Shop",
+    "settings": "Settings",
+
+    "pushups": "Push Ups",
+    "squats": "Squats",
+    "plank": "Plank",
+    "running": "Running",
+    "seconds": "Seconds",
+    "km": "KM",
+    "daily_quests_completed": "Completed Daily Quests",
+    "total_xp": "Total XP",
+    "total_coins": "Total Coins",
+
+    "xp_50": "⭐ 50 XP",
+    "xp_100": "⭐ 100 XP",
+    "rest_day_item": "🌴 Rest Day",
+
+    "buy_success": "✅ Purchased",
+    "not_found": "Item not found",
+    "not_enough_coins": "🪙 Not enough coins",
+    "wait_days": "⏳ Wait",
+    "days": "days",
+    "max_rest": "⛔ Cannot have more than 4 rest days",
+    "weekly_limit": "⛔ Weekly limit reached",
+
+    "choose": "Choose",
+    "back": "Back",
+    "exit": "Exit",
+    "wrong_choice": "Wrong Choice",
+    "no_player": "No Player",
+
+    "success": "Success",
+    "error": "Error",
+
+    "level_up": "Level Up!",
+    "reward": "Rewards",
+    "system_warning": "System Warning",
+
+    "language": "Language",
+    "arabic": "Arabic",
+    "english": "English"
+}

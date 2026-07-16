@@ -24,7 +24,7 @@ def side_quests():
             f"{i}. {quest['name']} (+{quest['xp']} XP | +{quest['coins']} 🪙)"
         )
 
-    choice = int(input("\nاختر المهمة التي أنجزتها: "))
+    choice = int(input("y\nاختر المهمة التي أنجزتها: "))
 
     if 1 <= choice <= len(quests):
 

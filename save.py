@@ -8,7 +8,6 @@ BACKUP_FILE = "player_backup.json"
 
 def save_player(player):
 
-    # إنشاء نسخة احتياطية قبل الحفظ
     if os.path.exists(FILE_NAME):
         shutil.copy(FILE_NAME, BACKUP_FILE)
 
@@ -21,19 +20,24 @@ def save_player(player):
         )
 
 
+
 def load_player():
 
     if not os.path.exists(FILE_NAME):
         return None
 
+
     try:
+
         with open(FILE_NAME, "r", encoding="utf-8") as file:
             player = json.load(file)
 
+
     except json.JSONDecodeError:
 
-        # محاولة استرجاع النسخة الاحتياطية
+
         if os.path.exists(BACKUP_FILE):
+
             shutil.copy(BACKUP_FILE, FILE_NAME)
 
             with open(FILE_NAME, "r", encoding="utf-8") as file:
@@ -41,6 +45,7 @@ def load_player():
 
         else:
             return None
+
 
 
     defaults = {
@@ -67,21 +72,39 @@ def load_player():
 
         "completed_quests": [],
 
-        "unlocked_achievements": []
+        "unlocked_achievements": [],
+
+
+        # بيانات اللاعب الشخصية (للنظام الذكي لاحقًا)
+
+        "العمر": 0,
+        "الطول": 0,
+        "الوزن": 0,
+
+        "الهدف": "",
+
+        "مستوى_التدريب": "مبتدئ"
+
     }
+
 
 
     updated = False
 
+
     for key, value in defaults.items():
 
         if key not in player:
+
             player[key] = value
             updated = True
 
 
+
     if updated:
+
         save_player(player)
+
 
 
     return player

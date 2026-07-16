@@ -1,12 +1,7 @@
 from rich.console import Console
 
 from save import save_player, load_player
-from player import (
-    create_player,
-    get_rank,
-    get_streak_rank,
-    use_rest_day
-)
+from player import create_player, get_rank, get_streak_rank, use_rest_day
 from quests import daily_quests
 from shop import get_shop_items, buy_item
 from achievements import show_achievements
@@ -17,7 +12,6 @@ from settings import (
     edit_settings
 )
 from stats import show_stats
-from health_report import show_health_report
 from language import t
 
 
@@ -38,25 +32,15 @@ def show_player(player):
     console.print(f"👤 {t('name')}      : {player['name']}")
     console.print(f"🏅 {t('rank')}     : {get_rank(player)}")
     console.print(f"⭐ {t('level')}    : {player['level']}")
-    console.print(
-        f"⚡ {t('xp')}       : {player['xp']}/{player['max_xp']}"
-    )
+    console.print(f"⚡ {t('xp')}       : {player['xp']}/{player['max_xp']}")
     console.print(f"💪 {t('strength')} : {player['strength']}")
     console.print(f"🏃 {t('speed')}    : {player['speed']}")
     console.print(f"🛡 {t('endurance')}: {player['endurance']}")
-    console.print(
-        f"🤸 {t('flexibility')}: {player['flexibility']}"
-    )
-    console.print(
-        f"🔥 {t('streak')}   : {player['streak']} {t('day')}"
-    )
-    console.print(
-        f"🎖 {t('title')} : {get_streak_rank(player)}"
-    )
+    console.print(f"🤸 {t('flexibility')}: {player['flexibility']}")
+    console.print(f"🔥 {t('streak')}   : {player['streak']} {t('day')}")
+    console.print(f"🎖 {t('title')} : {get_streak_rank(player)}")
     console.print(f"🪙 {t('coins')}    : {player['coins']}")
-    console.print(
-        f"🌴 {t('rest_days')}: {player.get('rest_days', 0)}"
-    )
+    console.print(f"🌴 {t('rest_days')}: {player.get('rest_days', 0)}")
 
 
 def open_shop():
@@ -86,6 +70,8 @@ def open_shop():
         console.print(message)
 
         pause()
+
+
 def open_settings():
 
     while True:
@@ -100,7 +86,6 @@ def open_settings():
         console.print("3️⃣ استخدام يوم الراحة")
         console.print("4️⃣ عرض إعدادات النظام")
         console.print("5️⃣ تعديل إعدادات النظام")
-        console.print("6️⃣ التقرير الصحي")
         console.print(f"0️⃣ {t('back')}")
 
         choice = input("\nاختر: ")
@@ -137,14 +122,6 @@ def open_settings():
             edit_settings()
             pause()
 
-        elif choice == "6":
-
-            player = load_player()
-
-            show_health_report(player)
-
-            pause()
-
         elif choice == "0":
 
             break
@@ -170,7 +147,9 @@ console.print(
     style="cyan"
 )
 
+
 player = load_player()
+
 
 if player is None:
 
@@ -179,11 +158,14 @@ if player is None:
     player = create_player(name)
 
     save_player(player)
+
+
 while True:
 
     player = load_player()
 
     show_player(player)
+
 
     console.print(
         f"\n========== {t('menu')} ==========",
@@ -197,42 +179,45 @@ while True:
     console.print(f"5️⃣  {t('settings')}")
     console.print(f"0️⃣  {t('exit')}")
 
+
     choice = input("\nاختر: ")
+
 
     if choice == "1":
 
         daily_quests()
         pause()
 
+
     elif choice == "2":
 
         show_stats(load_player())
         pause()
+
 
     elif choice == "3":
 
         show_achievements(load_player())
         pause()
 
+
     elif choice == "4":
 
         open_shop()
+
 
     elif choice == "5":
 
         open_settings()
 
+
     elif choice == "0":
 
-        console.print(
-            "\n👋 إلى اللقاء.",
-            style="red"
-        )
+        console.print("\n👋 إلى اللقاء.", style="red")
         break
+
 
     else:
 
-        console.print(
-            "\n❌ اختيار غير صحيح"
-        )
+        console.print("\n❌ اختيار غير صحيح")
         pause()

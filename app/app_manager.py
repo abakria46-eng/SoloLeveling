@@ -5,6 +5,8 @@ from app.screens.quests_screen import QuestsScreen
 from app.screens.stats_screen import StatsScreen
 from app.screens.achievements_screen import AchievementsScreen
 from app.screens.shop_screen import ShopScreen
+from app.screens.codex_screen import CodexScreen
+
 
 
 class HomePage(Screen):
@@ -14,11 +16,13 @@ class HomePage(Screen):
         self.add_widget(HomeScreen())
 
 
+
 class QuestsPage(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(QuestsScreen())
+
 
 
 class StatsPage(Screen):
@@ -28,11 +32,13 @@ class StatsPage(Screen):
         self.add_widget(StatsScreen())
 
 
+
 class AchievementsPage(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(AchievementsScreen())
+
 
 
 class ShopPage(Screen):
@@ -42,7 +48,17 @@ class ShopPage(Screen):
         self.add_widget(ShopScreen())
 
 
+
+class CodexPage(Screen):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.add_widget(CodexScreen())
+
+
+
 def create_manager():
+
     manager = ScreenManager()
 
     manager.add_widget(HomePage(name="home"))
@@ -50,5 +66,6 @@ def create_manager():
     manager.add_widget(StatsPage(name="stats"))
     manager.add_widget(AchievementsPage(name="achievements"))
     manager.add_widget(ShopPage(name="shop"))
+    manager.add_widget(CodexPage(name="codex"))
 
     return manager
